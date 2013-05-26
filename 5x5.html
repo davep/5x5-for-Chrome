@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+        <meta charset="utf-8">
+        <title>5x5</title>
+        <link rel="stylesheet" href="5x5.css" />
+    </head>
+
+    <body>
+        
+        <div id="game-area">
+            <div id="header">
+                <div id="info">
+                    Moves: <span data-bind="text: moves"></span>.
+                    Turned on: <span data-bind="text: onCount"></span>
+                    Left: <span data-bind="text: leftCount"></span>
+                </div>
+                <div id="you-won" data-bind="visible: leftCount() == 0">You've won!</div>
+            </div>
+            <div id="board" data-bind="foreach: rows">
+                <div class="row" data-bind="foreach: $data">
+                    <span class="cell" data-bind="css: { on: $data.state(), off: !$data.state() }, click: clickCell"></span>
+                </div>
+            </div>
+            <div id="buttons"><button type="button" data-bind="click: initialState">Reset</button></div>
+        </div>
+        
+        <script src="libs/jquery-2.0.1.min.js"></script>
+        <script src="libs/knockout-2.2.1.js"></script>
+        <script src="5x5.js"></script>
+        <script>
+            $( document ).ready( init5x5 );
+        </script>
+    </body>
+    
+</html>
